@@ -1,0 +1,17 @@
+[
+    {
+      "id": "id-1",
+      "message": "Go to the #shop",
+      "tags": ["#shop"]
+    },
+    {
+      "id": "id-2",
+      "message": "To make an appointment with a #doctor",
+      "tags": ["#doctor"]
+    },
+    {
+      "id": "id-3",
+      "message": "Fix the #car",
+      "tags": ["#car"]
+    }
+]
