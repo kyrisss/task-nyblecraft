@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { AppDispatch } from "../../redux/store";
-import { addNote, Note } from '../../redux/notesSlice';
+import { addNote } from '../../redux/notesSlice';
 import { useDispatch } from 'react-redux';
-import nextId from "react-id-generator";
 
 
 
@@ -10,6 +9,7 @@ const AddNote: React.FC = () => {
 
     const [message, setMessage] = useState('')
     const dispatch = useDispatch<AppDispatch>()
+    const [valid, setValid] = useState(true)
 
 
     const onChangeValue = (e: React.SyntheticEvent<HTMLInputElement>) => {
@@ -17,10 +17,17 @@ const AddNote: React.FC = () => {
     }
 
 
-    const onSubmit = (e: any) => {
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch(addNote(message))
-        e.currentTarget.reset()
+        if (!message) {
+            setValid(false)
+
+        } else {
+            dispatch(addNote(message))
+            e.currentTarget.reset()
+            setValid(true)
+        }
+
     }
 
     const validBtnClass: string = "btn btn-outline-light"
@@ -38,7 +45,7 @@ const AddNote: React.FC = () => {
                     name="name"
                     onChange={onChangeValue} />
                 <button type="submit"
-                    className={validBtnClass}>Добавить</button>
+                    className={valid ? validBtnClass : notValidBtnClass}>Добавить</button>
             </form>
         </div>
     )

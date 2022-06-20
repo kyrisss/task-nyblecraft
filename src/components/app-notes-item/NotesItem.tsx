@@ -23,8 +23,10 @@ const NotesItem: React.FC<Prop> = ({ id, tags, message}) => {
         }
     }
 
-    const onChangeFilter = (e: any) => {
-        dispatch(setFilter(e.currentTarget.textContent))
+    const onChangeFilter = (e: React.MouseEvent<HTMLElement>) => {
+        if(e.currentTarget.textContent){
+            dispatch(setFilter(e.currentTarget.textContent))
+        }
     }
 
     const mapTags = tags.map((tag, i) => {

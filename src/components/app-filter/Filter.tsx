@@ -7,8 +7,10 @@ const Filter = () => {
     const filter = useSelector((state: RootState) => state.notes.filter)
     const dispatch = useDispatch<AppDispatch>()
     
-    const onDeleteTag = (e: any) =>{
-        dispatch(deleteFilterTag(e.currentTarget.textContent))
+    const onDeleteTag = (e: React.MouseEvent<HTMLElement>) =>{
+        if(e.currentTarget.textContent){
+            dispatch(deleteFilterTag(e.currentTarget.textContent))
+        }
     }
 
     const mapFilter = filter.map((tag, i) => {
