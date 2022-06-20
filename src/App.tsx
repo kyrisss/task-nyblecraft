@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import './App.scss';
+import AddNote from './components/app-add-notes/AddNote';
+import Filter from './components/app-filter/Filter';
+import AppInfo from './components/app-info/AppInfo';
+import NotesList from './components/app-notes-list/NotesList';
+import SearchForm from './components/app-search-form/SearchForm';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="app">
+        <AppInfo />
+        <div className="search-panel">
+          <SearchForm />
+          <Filter />
+        </div>
+        <AddNote />
+        <NotesList />
+      </div>
+    </Provider>
   );
 }
 
