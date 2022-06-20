@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { AppDispatch } from "../../redux/store";
-import { addNote, Note } from './../../redux/notesSlice';
+import { addNote, Note } from '../../redux/notesSlice';
 import { useDispatch } from 'react-redux';
 import nextId from "react-id-generator";
 
