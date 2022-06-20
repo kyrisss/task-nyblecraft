@@ -24,6 +24,7 @@ const AddNote: React.FC = () => {
 
         } else {
             dispatch(addNote(message))
+            setMessage('')
             e.currentTarget.reset()
             setValid(true)
         }
